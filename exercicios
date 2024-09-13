@@ -1,0 +1,76 @@
+--exercicio 1 
+SELECT 
+    pedidos.pedido_id,
+    pedidos.data_pedido,
+    pedidos.total,
+    pedidos.status,
+    clientes.nome AS nome_cliente,
+    clientes.email AS email_cliente
+FROM pedidos
+INNER JOIN clientes ON pedidos.cliente_id = clientes.cliente_id;
+
+--exercicio 2
+SELECT 
+    campanhas.campanha_id,
+    campanhas.nome AS nome_campanha,
+    campanhas.descricao,
+    campanhas.data_inicio,
+    campanhas.data_fim,
+    clientes.cliente_id,
+    clientes.nome AS nome_cliente,
+    clientes.email AS email_cliente
+FROM campanhas
+INNER JOIN participacoes_campanha ON campanhas.campanha_id = participacoes_campanha.campanha_id
+INNER JOIN clientes ON participacoes_campanha.cliente_id = clientes.cliente_id;
+
+
+--exercicio 3
+SELECT 
+    transacoes.transacao_id,
+    transacoes.conta_id,
+    transacoes.tipo,
+    transacoes.valor,
+    transacoes.data_transacao,
+    transacoes.descricao,
+    orcamentos.categoria,
+    orcamentos.valor_planejado,
+    orcamentos.data_inicio,
+    orcamentos.data_fim
+FROM transacoes
+LEFT JOIN orcamentos ON transacoes.tipo = orcamentos.categoria;
+
+
+--exercicio 4
+SELECT 
+    pacientes.paciente_id,
+    pacientes.nome AS nome_paciente,
+    pacientes.data_nascimento,
+    pacientes.sexo,
+    pacientes.telefone,
+    pacientes.endereco,
+    prontuarios.prontuario_id,
+    prontuarios.data_consulta,
+    prontuarios.medico,
+    prontuarios.diagnostico,
+    prontuarios.prescricao,
+    prontuarios.observacoes
+FROM pacientes
+LEFT JOIN prontuarios ON pacientes.paciente_id = prontuarios.paciente_id;
+
+
+--exercicio 5
+SELECT 
+    pacientes.paciente_id,
+    pacientes.nome AS nome_paciente,
+    pacientes.data_nascimento,
+    pacientes.sexo,
+    pacientes.telefone,
+    pacientes.endereco,
+    prontuarios.prontuario_id,
+    prontuarios.data_consulta,
+    prontuarios.medico,
+    prontuarios.diagnostico,
+    prontuarios.prescricao,
+    prontuarios.observacoes
+FROM pacientes
+LEFT JOIN prontuarios ON pacientes.paciente_id = prontuarios.paciente_id;
